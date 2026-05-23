@@ -64,7 +64,7 @@ export XHS_POST_API_KEY="your-api-key"
 ```
 /xhs-copy "5个AI写作工具"        # 只生成文案
 /xhs-html-card "5个AI写作工具"   # 只生成卡片图
-/xhs-publish                     # 发布流程说明
+/xhs-publish                     # 云服务使用说明
 ```
 
 ## 包含的 Skills
@@ -74,7 +74,7 @@ export XHS_POST_API_KEY="your-api-key"
 | `/xhs-post` | 主流程编排，串联所有步骤 | — |
 | `/xhs-copy` | 小红书风格文案生成（LLM 直接生成） | 免费 |
 | `/xhs-html-card` | HTML 卡片配图生成（内置渲染） | 免费 |
-| `/xhs-publish` | 云服务 API 调用说明 | 按用量付费 |
+| `/xhs-publish` | 云服务完整使用说明（注册、笔记CRUD、上传、发布） | 按用量付费 |
 
 ## 费用
 
