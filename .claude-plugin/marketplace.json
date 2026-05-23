@@ -1,0 +1,25 @@
+{
+  "name": "xhs-post",
+  "owner": {
+    "name": "aganhui",
+    "url": "https://github.com/aganhui"
+  },
+  "metadata": {
+    "description": "本地生成文案+图片，扫码发布到小红书。Agent-first，安装即用。",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "xhs-post",
+      "description": "小红书笔记发布：本地生成文案+图片，扫码发布到小红书",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/xhs-post",
+        "./skills/xhs-copy",
+        "./skills/xhs-html-card",
+        "./skills/xhs-publish"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 ---
 name: xhs-html-card
-description: 用 HTML+CSS 生成小红书风格卡片配图，本地免费。
+description: 用 HTML+CSS 生成小红书风格卡片配图，本地免费。触发词：生成卡片、小红书配图、xhs图片、出图、卡片图。
+version: 1.0.0
 ---
 
 # xhs-html-card: HTML 卡片配图生成
@@ -11,35 +12,25 @@ description: 用 HTML+CSS 生成小红书风格卡片配图，本地免费。
 
 - 尺寸：1080×1440px（3:4，小红书推荐比例）
 - 字体：系统默认（macOS 用苹方，Windows 用微软雅黑）
-- 背景：渐变色或纯色，根据主题选择
 - 支持生成 1-9 张图片
+- 保存位置：`/tmp/xhs-cards/`
 
-## 使用方式
+## 配色方案
 
-在 cc 中说：
-- "帮我生成3张小红书卡片图" → 直接生成
-- 作为 /xhs-post 流程的 Step 2 自动调用
+根据笔记主题选择配色：
 
-## 生成步骤
+| 主题类型 | 配色 | 背景 CSS | 文字色 |
+|---------|------|---------|--------|
+| 科技/AI | 深蓝+青 | `linear-gradient(135deg, #0f172a, #1e3a5f)` | #e2e8f0 |
+| 生活/好物 | 暖粉+橙 | `linear-gradient(135deg, #fdf2f8, #fce7f3)` | #1f2937 |
+| 美食 | 橙+黄 | `linear-gradient(135deg, #fff7ed, #fed7aa)` | #1f2937 |
+| 职场/效率 | 灰蓝+白 | `linear-gradient(135deg, #f8fafc, #e2e8f0)` | #1f2937 |
+| 读书/知识 | 米黄+棕 | `linear-gradient(135deg, #fefce8, #fef3c7)` | #1f2937 |
+| 旅行 | 天蓝+绿 | `linear-gradient(135deg, #ecfeff, #a7f3d0)` | #1f2937 |
 
-### Step 1: 根据主题选择配色方案
+详细配色和变体见 `references/palettes.md`。
 
-根据笔记主题从以下方案中选择：
-
-| 主题类型 | 配色 | 背景 CSS |
-|---------|------|---------|
-| 科技/AI | 深蓝+青 | `linear-gradient(135deg, #0f172a, #1e3a5f)` |
-| 生活/好物 | 暖粉+橙 | `linear-gradient(135deg, #fdf2f8, #fce7f3)` |
-| 美食 | 橙+黄 | `linear-gradient(135deg, #fff7ed, #fed7aa)` |
-| 职场/效率 | 灰蓝+白 | `linear-gradient(135deg, #f8fafc, #e2e8f0)` |
-| 读书/知识 | 米黄+棕 | `linear-gradient(135deg, #fefce8, #fef3c7)` |
-| 旅行 | 天蓝+绿 | `linear-gradient(135deg, #ecfeff, #a7f3d0)` |
-
-### Step 2: 生成 HTML 文件
-
-为每张卡片生成一个独立 HTML 文件，保存到 `/tmp/xhs-cards/` 目录。
-
-HTML 模板：
+## HTML 模板
 
 ```html
 <!DOCTYPE html>
@@ -111,10 +102,6 @@ HTML 模板：
       <div class="item-num">01</div>
       <div class="item-text">{{ITEM_1}}</div>
     </div>
-    <div class="item">
-      <div class="item-num">02</div>
-      <div class="item-text">{{ITEM_2}}</div>
-    </div>
     <!-- 更多条目 -->
   </div>
   <div class="footer">左右滑动查看更多 →</div>
@@ -122,23 +109,36 @@ HTML 模板：
 </html>
 ```
 
+完整模板变体见 `references/templates.md`。
+
+## 生成步骤
+
+### Step 1: 选择配色方案
+
+根据笔记主题从上方配色表中选择。如果用户有明确偏好，以用户为准。
+
+### Step 2: 生成 HTML 文件
+
+为每张卡片生成一个独立 HTML 文件，保存到 `/tmp/xhs-cards/` 目录。
+
+```bash
+mkdir -p /tmp/xhs-cards
+```
+
 ### Step 3: 截图生成 PNG
 
 使用 Playwright 将 HTML 渲染为 PNG：
-
-```bash
-# cc 会自动使用 Playwright MCP 工具完成截图
-# 或者手动用浏览器打开 HTML 截图
-```
 
 截图参数：
 - viewport: 1080×1440
 - deviceScaleFactor: 1
 - fullPage: false
 
+**重要**：必须等页面完全加载后再截图，避免图片截断。
+
 ### Step 4: 保存图片
 
-将截图保存到 `/tmp/xhs-cards/` 目录：
+将截图保存到 `/tmp/xhs-cards/`：
 - `card-1.png`, `card-2.png`, ...
 
 ## 卡片内容规则
@@ -153,3 +153,9 @@ HTML 模板：
 1. 封面卡：标题 "这3个AI工具让我准时下班"
 2. 内容卡：3个工具的详细介绍
 3. 结尾卡：总结 + "你有什么好用的AI工具？评论区聊聊"
+
+## 使用方式
+
+在 cc 中说：
+- "帮我生成3张小红书卡片图" → 直接生成
+- 作为 /xhs-post 流程的 Step 2 自动调用

@@ -1,6 +1,7 @@
 ---
 name: xhs-publish
-description: xhs-post 云服务使用说明。注册、创建笔记、上传图片、预览、扫码发布的完整 API 参考。
+description: xhs-post 云服务使用说明。注册、创建笔记、上传图片、预览、扫码发布的完整 API 参考。触发词：发布笔记、上传图片、扫码发布、xhs发布、小红书发布。
+version: 1.0.0
 ---
 
 # xhs-publish: 云服务使用说明
@@ -71,8 +72,6 @@ curl -X POST $XHS_POST_SERVER/api/notes \
   -H "Content-Type: application/json" \
   -d '{"topic": "5个超好用的AI写作工具"}'
 ```
-
-服务器使用火山引擎 doubao 模型生成文案，风格规则与本地 /xhs-copy 一致。
 
 ## API 2: 笔记列表（免费）
 

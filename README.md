@@ -76,6 +76,8 @@ export XHS_POST_API_KEY="your-api-key"
 | `/xhs-html-card` | HTML 卡片配图生成（内置渲染） | 免费 |
 | `/xhs-publish` | 云服务完整使用说明（注册、笔记CRUD、上传、发布） | 按用量付费 |
 
+每个 skill 都包含 `references/` 目录，提供详细的配色方案、模板变体、API 响应格式和故障排查等渐进式文档。
+
 ## 费用
 
 | 操作 | 本地 | 服务器 |
