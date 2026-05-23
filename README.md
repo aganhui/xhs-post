@@ -26,12 +26,12 @@ xhs-post 是一个面向 Claude Code / Agent 的小红书笔记发布工具：
 
 ### 1. 安装 Plugin
 
-将本仓库 clone 到 cc 的 skills 目录：
+将本仓库 clone 到 cc 的 plugins 目录：
 
 ```bash
 # 一键安装
-mkdir -p ~/.claude/skills && \
-git clone https://github.com/aganhui/xhs-post.git ~/.claude/skills/xhs-post
+mkdir -p ~/.claude/plugins && \
+git clone https://github.com/aganhui/xhs-post.git ~/.claude/plugins/xhs-post
 ```
 
 ### 2. 注册获取 API Key
