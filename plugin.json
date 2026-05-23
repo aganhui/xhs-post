@@ -1,0 +1,12 @@
+{
+  "name": "xhs-post",
+  "version": "1.0.0",
+  "description": "小红书笔记发布：本地生成文案+图片，扫码发布到小红书。Agent-first，安装即用。",
+  "author": "aganhui",
+  "skills": [
+    "skills/xhs-post/SKILL.md",
+    "skills/xhs-copy/SKILL.md",
+    "skills/xhs-html-card/SKILL.md",
+    "skills/xhs-publish/SKILL.md"
+  ]
+}
